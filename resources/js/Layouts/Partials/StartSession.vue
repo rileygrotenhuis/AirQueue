@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { useForm } from '@inertiajs/vue3';
+import { useForm, usePage } from '@inertiajs/vue3';
 import InputError from '@/Components/InputError.vue';
 
 const emit = defineEmits(['close']);
 
+const userBands = usePage().props.auth.user.bands;
+
 const form = useForm({
+  band_id: null,
   title: '',
   session_key: '',
   session_passcode: null,
@@ -30,6 +33,24 @@ const submit = () => {
       </p>
     </div>
     <form @submit.prevent="submit" class="space-y-6 py-6">
+      <div>
+        <label class="text-lg mb-2" for="name">Band</label>
+        <select
+          v-model="form.band_id"
+          type="text"
+          id="title"
+          class="px-4 py-2 w-full rounded-lg border justify-start items-center gap-2.5 inline-flex text-black placeholder-opacity-10 focus:ring-orange-300 focus:border-orange-300"
+        >
+          <option
+            v-for="(band, index) in userBands"
+            :key="index"
+            :value="band.id"
+          >
+            {{ band.name }}
+          </option>
+        </select>
+        <InputError class="mt-1" :message="form.errors.band_id" />
+      </div>
       <div>
         <label class="text-lg mb-2" for="name">Title</label>
         <input
