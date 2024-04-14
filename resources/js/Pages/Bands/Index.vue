@@ -16,6 +16,12 @@ defineProps({
         class="max-h-[700px] flex flex-col gap-8 p-6 rounded-2xl bg-orange-400/50 mt-8 overflow-y-auto"
       >
         <BandBanner v-for="(band, index) in bands" :key="index" :band="band" />
+        <div
+          v-if="bands.length === 0"
+          class="text-center text-orange-900 text-lg font-bold"
+        >
+          Start a Band!
+        </div>
       </div>
     </div>
   </AuthenticatedLayout>

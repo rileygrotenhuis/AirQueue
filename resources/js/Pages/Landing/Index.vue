@@ -18,6 +18,12 @@ defineProps({
           :key="index"
           :session="session"
         />
+        <div
+          v-if="liveSessions.length === 0"
+          class="text-center text-orange-900 text-lg font-bold"
+        >
+          Start a Live Session!
+        </div>
       </div>
     </div>
   </AuthenticatedLayout>
