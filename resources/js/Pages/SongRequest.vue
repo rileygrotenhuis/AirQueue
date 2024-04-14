@@ -28,8 +28,18 @@ const submit = () => {
         </p>
       </div>
 
-      <form @submit.prevent="submit" class="grid grid-cols-1 md:grid-cols-3">
-        <div class="col-span-1"></div>
+      <form
+        @submit.prevent="submit"
+        class="grid grid-cols-1 md:grid-cols-3 gap-8"
+      >
+        <div
+          class="col-span-1 max-h-[450px] overflow-y-auto border-2 border-orange-700 rounded-2xl p-4"
+        >
+          <div class="flex justify-between items-center mb-4">
+            <h5 class="text-xl font-bold">Select Live Sessions</h5>
+          </div>
+        </div>
+
         <div class="col-span-1 md:col-span-2 space-y-6">
           <div>
             <label class="text-lg mb-2" for="name">Song Name</label>
