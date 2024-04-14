@@ -41,7 +41,7 @@ const switchTabs = (tab) => {
           v-if="songRequests.length === 0"
           class="text-center text-orange-900 text-lg font-bold"
         >
-          Incoming requests...
+          All incoming song requests...
         </div>
       </div>
 
