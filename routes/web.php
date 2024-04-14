@@ -12,6 +12,7 @@ Route::middleware('auth:web')->get('/', function (Request $request) {
     $liveSessions = $request->user()->liveSessions;
 
     return Inertia::render('Landing/Index', [
+        'songRequests' => $request->user()->songRequests,
         'liveSessions' => $liveSessions->load('host', 'band', 'members'),
     ]);
 })->name('home');

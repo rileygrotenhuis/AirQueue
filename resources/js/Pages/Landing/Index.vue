@@ -3,8 +3,10 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import SessionBanner from '@/Pages/Landing/Partials/SessionBanner.vue';
 import LandingTabs from '@/Pages/Landing/Partials/LandingTabs.vue';
 import { ref } from 'vue';
+import SongRequestBanner from '@/Pages/Landing/Partials/SongRequestBanner.vue';
 
 defineProps({
+  songRequests: Array,
   liveSessions: Array,
 });
 
@@ -30,7 +32,15 @@ const switchTabs = (tab) => {
         v-if="currentTab === 0"
         class="max-h-[700px] flex flex-col gap-8 p-6 rounded-2xl bg-orange-400/50 mt-8 overflow-y-auto"
       >
-        <div class="text-center text-orange-900 text-lg font-bold">
+        <SongRequestBanner
+          v-for="(songRequest, index) in songRequests"
+          :key="index"
+          :songRequest="songRequest"
+        />
+        <div
+          v-if="songRequests.length === 0"
+          class="text-center text-orange-900 text-lg font-bold"
+        >
           Incoming requests...
         </div>
       </div>
