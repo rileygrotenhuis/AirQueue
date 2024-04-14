@@ -8,7 +8,7 @@ import BandSession from '@/Pages/Bands/Partials/BandSession.vue';
 const props = defineProps({
   band: Object,
   members: Array,
-  liveSessions: Array,
+  bandSessions: Array,
 });
 
 const isOwner = computed(() => {
@@ -70,7 +70,7 @@ const submit = () => {
         </div>
       </form>
       <div class="col-span-1 flex flex-col gap-8">
-        <BandSession :band="band" :liveSessions="liveSessions" />
+        <BandSession :band="band" :bandSessions="bandSessions" />
         <BandMembers :band="band" :members="members" :isOwner="isOwner" />
       </div>
     </div>

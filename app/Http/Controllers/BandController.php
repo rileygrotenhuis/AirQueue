@@ -46,10 +46,22 @@ class BandController extends Controller
 
     public function show(Request $request, Band $band): Response
     {
+        $user = $request->user();
+
+        $bandSessions = $band->hostedLiveSessions->map(function ($session) use ($user) {
+            return [
+                'host_id' => $session->host_id,
+                'band_id' => $session->band_id,
+                'title' => $session->title,
+                'is_host' => $session->host_id === $user->id,
+                'is_member' => $session->members->contains($user),
+            ];
+        });
+
         return Inertia::render('Bands/Show', [
             'band' => $band,
             'members' => $band->members()->orderBy('has_accepted', 'desc')->get(),
-            'liveSessions' => $band->hostedLiveSessions,
+            'bandSessions' => $bandSessions,
         ]);
     }
 

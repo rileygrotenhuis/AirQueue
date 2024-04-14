@@ -1,9 +1,10 @@
 <script setup>
 import { useForm } from '@inertiajs/vue3';
+import BandSessionBanner from '@/Pages/Bands/Partials/BandSessionBanner.vue';
 
 const props = defineProps({
   band: Object,
-  liveSessions: Array,
+  bandSessions: Array,
 });
 
 const form = useForm({
@@ -12,14 +13,6 @@ const form = useForm({
   session_key: props.band.name,
   session_passcode: null,
 });
-
-const joinSession = (sessionId) => {
-  // live-sessions.join
-};
-
-const leaveSession = (sessionId) => {
-  // live-sessions.leave
-};
 </script>
 
 <template>
@@ -28,16 +21,11 @@ const leaveSession = (sessionId) => {
   >
     <h5 class="text-xl font-bold mb-4">Live Sessions</h5>
     <div class="flex flex-col gap-4">
-      <div
-        v-for="(session, index) in liveSessions"
+      <BandSessionBanner
+        v-for="(session, index) in bandSessions"
         :key="index"
-        class="w-full bg-orange-300 text-orange-700 px-4 py-2 rounded-lg hover:bg-orange-700 hover:text-white font-bold transition-colors duration-300 ease-in-out hover:cursor-pointer w-full text-center"
-        @click.prevent="joinSession(session.id)"
-      >
-        <div class="truncate mx-auto max-w-full md:max-w-[225px]">
-          {{ session.title }}
-        </div>
-      </div>
+        :session="session"
+      />
     </div>
   </div>
 </template>

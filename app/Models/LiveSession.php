@@ -21,6 +21,8 @@ class LiveSession extends Model
         'session_passcode',
     ];
 
+    protected $hidden = ['session_passcode'];
+
     public function host(): BelongsTo
     {
         return $this->belongsTo(User::class, 'host_id');
