@@ -48,6 +48,8 @@ class LiveSessionController extends Controller
 
     public function show(Request $request, LiveSession $liveSession): Response
     {
+        //        Gate::authorize('isMember', $liveSession);
+
         return Inertia::render('LiveSessions/Show', [
             'liveSession' => $liveSession,
         ]);
