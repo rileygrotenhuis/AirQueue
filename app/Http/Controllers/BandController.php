@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreOrUpdateBandRequest;
 use App\Models\Band;
 use App\Models\BandUser;
-use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -46,7 +46,9 @@ class BandController extends Controller
 
     public function show(Request $request, Band $band): Response
     {
-        return Inertia::render('Bands/Show');
+        return Inertia::render('Bands/Show', [
+            'band' => $band->load('members'),
+        ]);
     }
 
     public function update(StoreOrUpdateBandRequest $request, Band $band): RedirectResponse

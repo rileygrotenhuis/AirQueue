@@ -12,6 +12,6 @@ class BandPolicy
 
     public function isOwner(User $user, Band $band): bool
     {
-        return $user->id === $band->user_id;
+        return $user->id === $band->owner_id;
     }
 }
