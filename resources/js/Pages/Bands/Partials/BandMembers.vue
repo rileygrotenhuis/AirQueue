@@ -14,7 +14,10 @@ defineProps({
     class="max-h-[450px] overflow-y-auto border-2 border-orange-700 rounded-2xl p-4"
   >
     <div class="flex justify-between items-center mb-4">
-      <h5 class="text-xl font-bold">Members</h5>
+      <h5 class="text-xl font-bold">
+        Members
+        <span class="font-normal">({{ members.length }})</span>
+      </h5>
       <button>
         <AddIcon class="w-[25px]" />
       </button>

@@ -44,6 +44,7 @@ const submit = () => {
             id="name"
             class="px-4 py-2 w-full rounded-lg border justify-start items-center gap-2.5 inline-flex text-black placeholder-opacity-10 focus:ring-orange-300 focus:border-orange-300"
             placeholder="Enter your band name..."
+            :readonly="!isOwner"
           />
         </div>
         <div>
@@ -54,10 +55,12 @@ const submit = () => {
             id="description"
             class="px-4 py-2 w-full rounded-lg border justify-start items-center gap-2.5 inline-flex text-black placeholder-opacity-10 focus:ring-orange-300 focus:border-orange-300"
             placeholder="Band description..."
+            :readonly="!isOwner"
           />
         </div>
         <div>
           <button
+            v-if="isOwner"
             type="submit"
             class="float-right w-[150px] bg-orange-700 text-white px-4 py-2 rounded-lg border border-orange-700 hover:bg-orange-300 hover:text-orange-900 font-bold hover:border-orange-300 transition-colors duration-300 ease-in-out hover:cursor-pointer"
           >
