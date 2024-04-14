@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BandController;
 use App\Http\Controllers\BandInvitationController;
 use App\Http\Controllers\LiveSessionController;
+use App\Http\Controllers\SongRequestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -39,6 +40,11 @@ Route::middleware('auth:web')->prefix('live-sessions')->group(function () {
 
     Route::get('/{liveSession}', [LiveSessionController::class, 'show'])->name('live-sessions.show');
     Route::delete('/{liveSession}', [LiveSessionController::class, 'destroy'])->name('live-sessions.destroy');
+});
+
+Route::middleware('auth:web')->prefix('song-requests')->group(function () {
+    Route::post('/{songRequest}/approve', [SongRequestController::class, 'approve'])->name('song-requests.approve');
+    Route::post('/{songRequest}/reject', [SongRequestController::class, 'reject'])->name('song-requests.reject');
 });
 
 Route::post('/register', [AuthController::class, 'register'])->name('register-user');

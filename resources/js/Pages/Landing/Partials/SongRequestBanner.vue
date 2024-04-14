@@ -1,17 +1,18 @@
 <script setup lang="ts">
 import ApproveIcon from '@/Components/Icons/ApproveIcon.vue';
 import RejectIcon from '@/Components/Icons/RejectIcon.vue';
+import { useForm } from '@inertiajs/vue3';
 
 const props = defineProps({
   songRequest: Object,
 });
 
 const rejectSongRequest = () => {
-  alert('Reject song request');
+  useForm({}).post(route('song-requests.reject', props.songRequest.id));
 };
 
 const approveSongRequest = () => {
-  alert('Approve song request');
+  useForm({}).post(route('song-requests.approve', props.songRequest.id));
 };
 </script>
 
