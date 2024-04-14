@@ -15,7 +15,7 @@ const user = usePage().props.auth.user;
 <template>
   <Head :title="title" />
   <div>
-    <nav class="w-full px-4 py-4 bg-orange-700">
+    <nav class="w-full px-2 md:px-4 py-4 bg-orange-700">
       <div class="max-w-5xl mx-auto flex justify-between items-center">
         <a :href="route('home')" class="hover:cursor-pointer">
           <LogoIcon />
