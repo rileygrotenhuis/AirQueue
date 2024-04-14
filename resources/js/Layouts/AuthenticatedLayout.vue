@@ -21,7 +21,7 @@ const user = usePage().props.auth.user;
           <LogoIcon />
         </a>
 
-        <div class="flex items-center gap-12">
+        <div class="flex items-center gap-8">
           <a href="#">
             <BandIcon />
           </a>
