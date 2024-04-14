@@ -68,4 +68,9 @@ class User extends Authenticatable
             'live_session_id'
         );
     }
+
+    public function songRequests(): HasMany
+    {
+        return $this->hasMany(SongRequest::class, 'user_id');
+    }
 }
