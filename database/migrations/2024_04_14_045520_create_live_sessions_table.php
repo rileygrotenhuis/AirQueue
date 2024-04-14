@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('live_sessions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('host_id')->constrained('users');
-            $table->foreignId('band_id')->nullable()->constrained('bands');
+            $table->foreignId('host_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('band_id')->nullable()->constrained('bands')->onDelete('cascade');
             $table->string('title');
             $table->string('session_key');
             $table->string('session_passcode')->nullable();
