@@ -15,7 +15,7 @@
     <g id="SVGRepo_iconCarrier">
       <path
         d="M7 12L12 12M12 12L17 12M12 12V7M12 12L12 17"
-        stroke="#c2410c"
+        stroke="#000000"
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
@@ -24,7 +24,7 @@
         cx="12"
         cy="12"
         r="9"
-        stroke="#c2410c"
+        stroke="#000000"
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
