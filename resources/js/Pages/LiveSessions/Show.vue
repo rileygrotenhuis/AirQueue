@@ -3,7 +3,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import SongRequestBanner from '@/Components/SongRequests/SongRequestBanner.vue';
 import SessionMembers from '@/Pages/LiveSessions/Partials/SessionMembers.vue';
 import { computed } from 'vue';
-import { router, useForm, usePage } from '@inertiajs/vue3';
+import { router, usePage } from '@inertiajs/vue3';
 
 const props = defineProps({
   liveSession: Object,
