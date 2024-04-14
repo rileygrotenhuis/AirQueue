@@ -3,6 +3,7 @@ import { Head, usePage } from '@inertiajs/vue3';
 import LogoIcon from '@/Components/Icons/LogoIcon.vue';
 import SessionIcon from '@/Components/Icons/SessionIcon.vue';
 import UserDropdownMenu from '@/Layouts/Partials/UserDropdownMenu.vue';
+import SessionDropdownMenu from '@/Layouts/Partials/SessionDropdownMenu.vue';
 
 defineProps({
   title: String,
@@ -21,9 +22,7 @@ const user = usePage().props.auth.user;
         </a>
 
         <div class="flex items-center gap-16">
-          <span class="cursor-pointer">
-            <SessionIcon />
-          </span>
+          <SessionDropdownMenu />
           <UserDropdownMenu />
         </div>
       </div>
