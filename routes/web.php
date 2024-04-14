@@ -23,6 +23,8 @@ Route::middleware('auth:web')->group(function () {
 
         Route::get('/{band}', [BandController::class, 'show'])->name('bands.show');
         Route::put('/{band}', [BandController::class, 'update'])->name('bands.update');
+
+        Route::delete('/{band}/members/{bandUser}/remove', [BandController::class, 'removeMember'])->name('bands.members.remove');
     });
 });
 

@@ -10,7 +10,7 @@ defineProps({
 
 <template>
   <AuthenticatedLayout title="Bands">
-    <div class="max-w-4xl mx-auto py-12 px-4">
+    <div class="max-w-5xl mx-auto py-12 px-4">
       <BandsHeader />
       <div
         class="max-h-[700px] flex flex-col gap-8 p-6 rounded-2xl bg-orange-400/50 mt-8 overflow-y-auto"

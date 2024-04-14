@@ -1,9 +1,16 @@
 <script setup lang="ts">
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { useForm } from '@inertiajs/vue3';
+import { useForm, usePage } from '@inertiajs/vue3';
+import BandMembers from '@/Pages/Bands/Partials/BandMembers.vue';
+import { computed } from 'vue';
 
 const props = defineProps({
   band: Object,
+  members: Array,
+});
+
+const isOwner = computed(() => {
+  return props.band.owner_id === usePage().props.auth.user.id;
 });
 
 const form = useForm({
@@ -18,8 +25,10 @@ const submit = () => {
 
 <template>
   <AuthenticatedLayout title="Bands">
-    <div class="max-w-4xl mx-auto py-12 px-4">
-      <form @submit.prevent="submit" class="space-y-6">
+    <div
+      class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto py-12 px-4"
+    >
+      <form @submit.prevent="submit" class="col-span-1 md:col-span-2 space-y-6">
         <div>
           <h3 class="text-orange-700 font-bold text-3xl mb-1">Manage Band</h3>
           <p class="font-light text-base">
@@ -56,6 +65,9 @@ const submit = () => {
           </button>
         </div>
       </form>
+      <div class="col-span-1">
+        <BandMembers :band="band" :members="members" :isOwner="isOwner" />
+      </div>
     </div>
   </AuthenticatedLayout>
 </template>

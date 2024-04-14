@@ -32,7 +32,7 @@ class Band extends Model
             'band_user',
             'band_id',
             'user_id'
-        )->withPivot('has_accepted');
+        )->withPivot('id', 'has_accepted');
     }
 
     public function hostedLiveSessions(): HasMany

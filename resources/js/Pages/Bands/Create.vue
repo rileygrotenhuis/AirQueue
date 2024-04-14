@@ -14,7 +14,7 @@ const submit = () => {
 
 <template>
   <AuthenticatedLayout title="Bands">
-    <div class="max-w-4xl mx-auto py-12 px-4">
+    <div class="max-w-5xl mx-auto py-12 px-4">
       <form @submit.prevent="submit" class="space-y-6">
         <div>
           <h3 class="text-orange-700 font-bold text-3xl mb-1">New Band</h3>

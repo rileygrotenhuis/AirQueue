@@ -47,7 +47,8 @@ class BandController extends Controller
     public function show(Request $request, Band $band): Response
     {
         return Inertia::render('Bands/Show', [
-            'band' => $band->load('members'),
+            'band' => $band,
+            'members' => $band->members()->orderBy('has_accepted', 'desc')->get(),
         ]);
     }
 
@@ -59,6 +60,15 @@ class BandController extends Controller
             'name' => $request->input('name'),
             'description' => $request->input('description'),
         ]);
+
+        return to_route('bands.show', $band);
+    }
+
+    public function removeMember(Request $request, Band $band, BandUser $bandUser): RedirectResponse
+    {
+        Gate::authorize('isOwner', $band);
+
+        $bandUser->delete();
 
         return to_route('bands.show', $band);
     }
