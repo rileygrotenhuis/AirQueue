@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+
+defineProps({
+  liveSessions: Array
+});
 </script>
 
 <template>
   <AuthenticatedLayout title="Home">
     <div>
-      <h1>Landing</h1>
+      {{ JSON.stringify(liveSessions) }}
     </div>
   </AuthenticatedLayout>
 </template>

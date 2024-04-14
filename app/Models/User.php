@@ -58,4 +58,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(LiveSession::class, 'host_id');
     }
+
+    public function liveSessions(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            LiveSession::class,
+            'live_session_user',
+            'user_id',
+            'live_session_id'
+        );
+    }
 }

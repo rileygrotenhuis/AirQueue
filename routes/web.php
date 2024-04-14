@@ -4,11 +4,16 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BandController;
 use App\Http\Controllers\LiveSessionController;
 use App\Http\Controllers\BandInvitationController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::middleware('auth:web')->get('/', function () {
-    return Inertia::render('Index');
+Route::middleware('auth:web')->get('/', function (Request $request) {
+    $liveSessions = $request->user()->liveSessions;
+
+    return Inertia::render('Index', [
+        'liveSessions' => $liveSessions,
+    ]);
 })->name('home');
 
 Route::middleware('auth:web')->prefix('bands')->group(function () {
