@@ -7,7 +7,7 @@ const emit = defineEmits(['close']);
 const form = useForm({
   title: '',
   session_key: '',
-  session_passcode: '',
+  session_passcode: null,
 });
 
 const submit = () => {

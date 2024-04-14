@@ -3,10 +3,12 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { useForm, usePage } from '@inertiajs/vue3';
 import BandMembers from '@/Pages/Bands/Partials/BandMembers.vue';
 import { computed } from 'vue';
+import BandSession from '@/Pages/Bands/Partials/BandSession.vue';
 
 const props = defineProps({
   band: Object,
   members: Array,
+  liveSession: Object,
 });
 
 const isOwner = computed(() => {
@@ -34,7 +36,6 @@ const submit = () => {
           <p class="font-light text-base">
             Manage the settings of your band and invite other members to join.
           </p>
-          <p></p>
         </div>
         <div>
           <label class="text-lg mb-2" for="name">Band Name</label>
@@ -68,7 +69,8 @@ const submit = () => {
           </button>
         </div>
       </form>
-      <div class="col-span-1">
+      <div class="col-span-1 flex flex-col gap-8">
+        <BandSession :band="band" :liveSession="liveSession" />
         <BandMembers :band="band" :members="members" :isOwner="isOwner" />
       </div>
     </div>

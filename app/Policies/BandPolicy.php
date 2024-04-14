@@ -10,6 +10,11 @@ class BandPolicy
 {
     use HandlesAuthorization;
 
+    public function isMember(User $user, Band $band): bool
+    {
+        return $band->members->contains($user);
+    }
+
     public function isOwner(User $user, Band $band): bool
     {
         return $user->id === $band->owner_id;

@@ -49,6 +49,7 @@ class BandController extends Controller
         return Inertia::render('Bands/Show', [
             'band' => $band,
             'members' => $band->members()->orderBy('has_accepted', 'desc')->get(),
+            'liveSession' => $band->hostedLiveSessions()->first(),
         ]);
     }
 

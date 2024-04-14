@@ -2,7 +2,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 
 defineProps({
-  liveSessions: Array
+  liveSessions: Array,
 });
 </script>
 

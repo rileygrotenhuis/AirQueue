@@ -21,8 +21,8 @@ class JoinLiveSessionRequest extends FormRequest
                     if ($liveSession->session_passcode !== $value) {
                         $fail('The session passcode is incorrect.');
                     }
-                }
-            ]
+                },
+            ],
         ];
     }
 }

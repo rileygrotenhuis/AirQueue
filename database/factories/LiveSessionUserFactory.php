@@ -12,7 +12,7 @@ class LiveSessionUserFactory extends Factory
     {
         return [
             'live_session_id' => LiveSession::factory(),
-            'user_id' => User::factory()
+            'user_id' => User::factory(),
         ];
     }
 }

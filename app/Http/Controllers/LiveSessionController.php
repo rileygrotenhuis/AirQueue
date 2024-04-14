@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\JoinLiveSessionRequest;
 use App\Http\Requests\StoreLiveSessionRequest;
+use App\Models\Band;
 use App\Models\LiveSession;
 use App\Models\LiveSessionUser;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -15,8 +16,13 @@ class LiveSessionController extends Controller
 {
     public function store(StoreLiveSessionRequest $request): RedirectResponse
     {
+        if ($request->input('band_id')) {
+            Gate::authorize('isMember', Band::find($request->input('band_id')));
+        }
+
         $liveSession = LiveSession::create([
             'host_id' => $request->user()->id,
+            'band_id' => $request->input('band_id'),
             'title' => $request->input('title'),
             'session_key' => $request->input('session_key'),
             'session_passcode' => $request->input('session_passcode'),
@@ -43,7 +49,16 @@ class LiveSessionController extends Controller
     public function show(Request $request, LiveSession $liveSession): Response
     {
         return Inertia::render('LiveSessions/Show', [
-            'liveSession' => $liveSession
+            'liveSession' => $liveSession,
         ]);
+    }
+
+    public function destroy(Request $request, LiveSession $liveSession): RedirectResponse
+    {
+        Gate::authorize('isMember', $liveSession);
+
+        $liveSession->delete();
+
+        return to_route('home');
     }
 }
