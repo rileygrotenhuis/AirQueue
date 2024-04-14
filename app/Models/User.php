@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -35,5 +36,15 @@ class User extends Authenticatable
     public function getInitialsAttribute(): string
     {
         return $this->first_name[0].$this->last_name[0];
+    }
+
+    public function ownedBands(): HasMany
+    {
+        return $this->hasMany(Band::class, 'owner_id');
+    }
+
+    public function hostedLiveSessions(): HasMany
+    {
+        return $this->hasMany(LiveSession::class, 'host_id');
     }
 }
