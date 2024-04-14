@@ -22,7 +22,6 @@ const submit = () => {
             Create a band and invite members to begin collaborating in regular
             live sessions.
           </p>
-          <p></p>
         </div>
         <div>
           <label class="text-lg mb-2" for="name">Band Name</label>

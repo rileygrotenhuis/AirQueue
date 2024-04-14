@@ -19,7 +19,7 @@ Route::middleware('auth:web')->group(function () {
         Route::get('/invitations', [BandInvitationController::class, 'index'])->name('bands.invitations');
         Route::post('/invitations/{bandUser}/accept', [BandInvitationController::class, 'accept'])->name('bands.invitations.accept');
         Route::post('/invitations/{bandUser}/reject', [BandInvitationController::class, 'reject'])->name('bands.invitations.reject');
-        Route::post('/{band}/invite/{user}', [BandInvitationController::class, 'invite'])->name('bands.invite');
+        Route::post('/{band}/invite', [BandInvitationController::class, 'invite'])->name('bands.invite');
 
         Route::get('/{band}', [BandController::class, 'show'])->name('bands.show');
         Route::put('/{band}', [BandController::class, 'update'])->name('bands.update');
