@@ -21,10 +21,12 @@ const authorText = computed(() => {
       class="border flex justify-between items-center p-6 bg-orange-50 hover:bg-orange-200 cursor-pointer rounded-2xl"
     >
       <div>
-        <h4 class="text-lg font-bold mb-1">
+        <h4
+          class="text-lg font-bold mb-1 truncate max-w-[100px] md:max-w-[300px]"
+        >
           {{ session.title }}
         </h4>
-        <p class="text-sm font-light">
+        <p class="text-sm font-light max-w-[100px] md:max-w-[300px]">
           {{ authorText }}
         </p>
       </div>

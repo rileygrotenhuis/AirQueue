@@ -13,15 +13,19 @@ const props = defineProps({
         <img
           :src="songRequest.spotify_image_url"
           :alt="songRequest.song_name"
-          class="w-16 h-16 rounded-lg"
+          class="w-8 h-8 md:w-16 md:h-16 rounded-lg"
         />
       </div>
 
       <div>
-        <h4 class="text-lg font-bold mb-1">
+        <h4
+          class="text-sm md:text-lg font-bold truncate max-w-[100px] md:max-w-[300px]"
+        >
           {{ songRequest.song_name }}
         </h4>
-        <p class="text-sm font-light">
+        <p
+          class="text-xs md:text-base font-light truncate max-w-[100px] md:max-w-[300px]"
+        >
           {{ songRequest.song_artist }}
         </p>
       </div>
