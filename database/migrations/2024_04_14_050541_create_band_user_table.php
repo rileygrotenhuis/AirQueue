@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('band_id')->constrained('bands')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->boolean('has_accepted')->default(false);
             $table->timestamps();
         });
     }
