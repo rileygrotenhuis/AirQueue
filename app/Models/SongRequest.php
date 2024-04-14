@@ -13,6 +13,7 @@ class SongRequest extends Model
     protected $table = 'song_requests';
 
     protected $fillable = [
+        'requester_id',
         'user_id',
         'live_session_id',
         'song_name',
@@ -22,13 +23,18 @@ class SongRequest extends Model
         'spotify_track_uri',
     ];
 
+    public function requester(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'requester_id');
+    }
+
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function liveSession(): BelongsTo
     {
-        return $this->belongsTo(LiveSession::class);
+        return $this->belongsTo(LiveSession::class, 'live_session_id');
     }
 }
