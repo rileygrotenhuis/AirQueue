@@ -12,7 +12,7 @@ Route::middleware('auth:web')->get('/', function (Request $request) {
     $liveSessions = $request->user()->liveSessions;
 
     return Inertia::render('Landing/Index', [
-        'liveSessions' => $liveSessions,
+        'liveSessions' => $liveSessions->load('host', 'band', 'members'),
     ]);
 })->name('home');
 
