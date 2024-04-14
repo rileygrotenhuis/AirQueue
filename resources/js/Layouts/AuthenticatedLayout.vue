@@ -22,7 +22,7 @@ const user = usePage().props.auth.user;
         </a>
 
         <div class="flex items-center gap-8">
-          <a href="#">
+          <a :href="route('bands.index')">
             <BandIcon />
           </a>
           <SessionDropdownMenu />
