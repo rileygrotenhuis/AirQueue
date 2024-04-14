@@ -5,8 +5,9 @@ import BandsHeader from '@/Pages/Bands/Partials/BandsHeader.vue';
 
 <template>
   <AuthenticatedLayout title="Bands">
-    <div class="max-w-4xl mx-auto py-12">
+    <div class="max-w-4xl mx-auto py-12 px-4">
       <BandsHeader />
     </div>
   </AuthenticatedLayout>
 </template>
+g
