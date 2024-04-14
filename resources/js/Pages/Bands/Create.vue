@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { useForm } from '@inertiajs/vue3';
+import InputError from '@/Components/InputError.vue';
 
 const form = useForm({
   name: '',
@@ -32,6 +33,7 @@ const submit = () => {
             class="px-4 py-2 w-full rounded-lg border justify-start items-center gap-2.5 inline-flex text-black placeholder-opacity-10 focus:ring-orange-300 focus:border-orange-300"
             placeholder="Enter your band name..."
           />
+          <InputError class="mt-2" :message="form.errors.name" />
         </div>
         <div>
           <label class="text-lg mb-2" for="name">Description</label>
@@ -42,6 +44,7 @@ const submit = () => {
             class="px-4 py-2 w-full rounded-lg border justify-start items-center gap-2.5 inline-flex text-black placeholder-opacity-10 focus:ring-orange-300 focus:border-orange-300"
             placeholder="Band description..."
           />
+          <InputError class="mt-2" :message="form.errors.description" />
         </div>
         <div>
           <button

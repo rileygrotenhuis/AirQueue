@@ -6,9 +6,18 @@ use App\Models\SongRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class SongRequestController extends Controller
 {
+    public function index(Request $request): Response
+    {
+        return Inertia::render('SongRequest', [
+            'liveSessions' => $request->user()->liveSessions,
+        ]);
+    }
+
     public function approve(Request $request, SongRequest $songRequest): RedirectResponse
     {
         Gate::authorize('isOwner', $songRequest);
