@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BandController;
+use App\Http\Controllers\LiveSessionController;
 use App\Http\Controllers\BandInvitationController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -24,6 +25,13 @@ Route::middleware('auth:web')->prefix('bands')->group(function () {
     Route::put('/{band}', [BandController::class, 'update'])->name('bands.update');
 
     Route::delete('/{band}/members/{bandUser}/remove', [BandController::class, 'removeMember'])->name('bands.members.remove');
+});
+
+Route::middleware('auth:web')->prefix('live-sessions')->group(function () {
+   Route::post('/', [LiveSessionController::class, 'store'])->name('live-sessions.store');
+   Route::post('/join', [LiveSessionController::class, 'join'])->name('live-sessions.join');
+
+   Route::get('/{liveSession]', [LiveSessionController::class, 'show'])->name('live-sessions.show');
 });
 
 Route::post('/register', [AuthController::class, 'register'])->name('register-user');

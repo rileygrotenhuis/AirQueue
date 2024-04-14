@@ -11,12 +11,12 @@ const joinSessionModalOpen = ref(false);
 </script>
 
 <template>
-  <Modal :show="startSessionModalOpen" @close="startSessionModalOpen = false">
-    <StartSession />
+  <Modal :show="startSessionModalOpen">
+    <StartSession @close="startSessionModalOpen = false" />
   </Modal>
 
-  <Modal :show="joinSessionModalOpen" @close="joinSessionModalOpen = false">
-    <JoinSession />
+  <Modal :show="joinSessionModalOpen">
+    <JoinSession @close="joinSessionModalOpen = false" />
   </Modal>
 
   <div class="relative ms-3">

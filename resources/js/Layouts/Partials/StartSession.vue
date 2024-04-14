@@ -11,11 +11,11 @@ const form = useForm({
 });
 
 const submit = () => {
-  // form.post(route('bands.invite', props.band.id), {
-  //   onSuccess: () => {
-  //     emit('close');
-  //   },
-  // });
+  form.post(route('live-sessions.store'), {
+    onSuccess: () => {
+      emit('close');
+    },
+  });
 };
 </script>
 

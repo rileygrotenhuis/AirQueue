@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Band;
+use App\Models\LiveSession;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class BandUserFactory extends Factory
+class LiveSessionUserFactory extends Factory
 {
     public function definition(): array
     {
         return [
-            'band_id' => Band::factory(),
-            'user_id' => User::factory(),
+            'live_session_id' => LiveSession::factory(),
+            'user_id' => User::factory()
         ];
     }
 }
