@@ -8,7 +8,7 @@ defineProps({
   liveSessions: Array,
 });
 
-const tabs = ['Queue', 'Live Sessions'];
+const tabs = ['Requests', 'Live Sessions'];
 
 const currentTab = ref(0);
 
@@ -31,7 +31,7 @@ const switchTabs = (tab) => {
         class="max-h-[700px] flex flex-col gap-8 p-6 rounded-2xl bg-orange-400/50 mt-8 overflow-y-auto"
       >
         <div class="text-center text-orange-900 text-lg font-bold">
-          Add songs to your Queue!
+          Incoming requests...
         </div>
       </div>
 
