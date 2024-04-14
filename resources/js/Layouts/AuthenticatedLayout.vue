@@ -2,6 +2,7 @@
 import { Head, usePage } from '@inertiajs/vue3';
 import LogoIcon from '@/Components/Icons/LogoIcon.vue';
 import SessionIcon from '@/Components/Icons/SessionIcon.vue';
+import UserDropdownMenu from '@/Layouts/Partials/UserDropdownMenu.vue';
 
 defineProps({
   title: String,
@@ -23,10 +24,7 @@ const user = usePage().props.auth.user;
           <span class="cursor-pointer">
             <SessionIcon />
           </span>
-          <span
-            class="text-white text-base font-bold border border-white p-2 rounded-full cursor-pointer"
-            >{{ user.initials }}</span
-          >
+          <UserDropdownMenu />
         </div>
       </div>
     </nav>

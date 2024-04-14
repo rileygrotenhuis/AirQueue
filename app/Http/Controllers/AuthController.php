@@ -6,6 +6,7 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegistrationRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -30,5 +31,16 @@ class AuthController extends Controller
         $request->session()->regenerate();
 
         return to_route('home');
+    }
+
+    public function logout(Request $request): RedirectResponse
+    {
+        auth()->guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return to_route('login');
     }
 }
