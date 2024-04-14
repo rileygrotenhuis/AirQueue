@@ -8,7 +8,7 @@ const props = defineProps({
 
 const authorText = computed(() => {
   if (props.session.band?.name) {
-    return props.session.band.name + `(${props.session.host.initials})`;
+    return props.session.band.name + ` (${props.session.host.initials})`;
   }
 
   return props.session.host.first_name + ' ' + props.session.host.last_name;
