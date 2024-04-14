@@ -8,27 +8,27 @@ defineProps({
 });
 
 const form = useForm({
-  selectedSessions: [],
+  session_ids: [],
   song_name: '',
   song_artist: '',
 });
 
 const sessionIsSelected = (sessionId) => {
-  return form.selectedSessions.includes(sessionId);
+  return form.session_ids.includes(sessionId);
 };
 
 const toggleSession = (sessionId) => {
   if (sessionIsSelected(sessionId)) {
-    form.selectedSessions = form.selectedSessions.filter(
+    form.session_ids = form.session_ids.filter(
       (session) => session !== sessionId
     );
   } else {
-    form.selectedSessions = [...form.selectedSessions, sessionId];
+    form.session_ids = [...form.session_ids, sessionId];
   }
 };
 
 const submit = () => {
-  alert('Request a song');
+  form.post(route('song-requests.store'));
 };
 </script>
 

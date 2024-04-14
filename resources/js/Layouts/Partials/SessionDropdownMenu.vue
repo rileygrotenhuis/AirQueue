@@ -30,7 +30,7 @@ const joinSessionModalOpen = ref(false);
 
         <button
           @click="startSessionModalOpen = true"
-          class="block w-full px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+          class="block w-full px-4 py-2 text-gstart text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
         >
           Start session
         </button>
@@ -40,6 +40,17 @@ const joinSessionModalOpen = ref(false);
         >
           Join session
         </button>
+
+        <hr class="mb-2" />
+
+        <div class="block px-4 py-2 text-xs text-gray-400">Songs</div>
+
+        <a
+          :href="route('song-requests.index')"
+          class="block w-full px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+        >
+          + Request a song
+        </a>
       </template>
     </Dropdown>
   </div>
