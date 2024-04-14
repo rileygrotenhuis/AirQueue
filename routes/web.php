@@ -37,6 +37,7 @@ Route::middleware('auth:web')->prefix('bands')->group(function () {
 Route::middleware('auth:web')->prefix('live-sessions')->group(function () {
     Route::post('/', [LiveSessionController::class, 'store'])->name('live-sessions.store');
     Route::post('/join', [LiveSessionController::class, 'join'])->name('live-sessions.join');
+    Route::post('/{liveSession}/leave', [LiveSessionController::class, 'leave'])->name('live-sessions.leave');
 
     Route::get('/{liveSession}', [LiveSessionController::class, 'show'])->name('live-sessions.show');
     Route::delete('/{liveSession}', [LiveSessionController::class, 'destroy'])->name('live-sessions.destroy');

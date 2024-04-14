@@ -46,6 +46,15 @@ class LiveSessionController extends Controller
         return to_route('live-sessions.show', $liveSessionUser->liveSession);
     }
 
+    public function leave(Request $request, LiveSession $liveSession): RedirectResponse
+    {
+        Gate::authorize('isMember', $liveSession);
+
+        $liveSession->members()->where('user_id', $request->user()->id)->delete();
+
+        return to_route('home');
+    }
+
     public function show(Request $request, LiveSession $liveSession): Response
     {
         //        Gate::authorize('isMember', $liveSession);
