@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Head, usePage } from '@inertiajs/vue3';
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+import LogoIcon from '@/Components/Icons/LogoIcon.vue';
 import SessionIcon from '@/Components/Icons/SessionIcon.vue';
 
 defineProps({
@@ -16,7 +16,7 @@ const user = usePage().props.auth.user;
     <nav class="w-full px-4 py-4 bg-orange-700">
       <div class="max-w-4xl mx-auto flex justify-between items-center">
         <a :href="route('home')" class="hover:cursor-pointer">
-          <ApplicationLogo />
+          <LogoIcon />
         </a>
 
         <div class="flex items-center gap-16">

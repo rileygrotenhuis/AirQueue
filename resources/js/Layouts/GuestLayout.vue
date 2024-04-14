@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3';
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+import LogoIcon from '@/Components/Icons/LogoIcon.vue';
 
 defineProps({
   title: String,
@@ -12,7 +12,7 @@ defineProps({
   <div>
     <nav class="w-full px-4 py-4 bg-orange-700 flex justify-center">
       <a :href="route('home')" class="hover:cursor-pointer">
-        <ApplicationLogo />
+        <LogoIcon />
       </a>
     </nav>
 
