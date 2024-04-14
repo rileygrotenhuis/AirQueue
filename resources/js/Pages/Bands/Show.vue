@@ -4,6 +4,6 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 
 <template>
   <AuthenticatedLayout title="Bands">
-    <div class="max-w-4xl mx-auto py-12"></div>
+    <div class="max-w-4xl mx-auto py-12 px-4"></div>
   </AuthenticatedLayout>
 </template>
