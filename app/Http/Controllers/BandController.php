@@ -15,7 +15,11 @@ class BandController extends Controller
 {
     public function index(Request $request): Response
     {
-        return Inertia::render('Bands/Index');
+        $bands = $request->user()->bands()->withCount('members')->get();
+
+        return Inertia::render('Bands/Index', [
+            'bands' => $bands,
+        ]);
     }
 
     public function store(StoreOrUpdateBandRequest $request): RedirectResponse
