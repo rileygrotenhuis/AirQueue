@@ -13,6 +13,10 @@ Route::middleware('auth:web')->group(function () {
     Route::prefix('bands')->group(function () {
         Route::get('/', [BandController::class, 'index'])->name('bands.index');
         Route::get('/create', [BandController::class, 'create'])->name('bands.create');
+        Route::get('/invitations', [BandController::class, 'invitations'])->name('bands.invitations');
+
+        Route::get('/{band}', [BandController::class, 'show'])->name('bands.show');
+        Route::get('/{band}/settings', [BandController::class, 'settings'])->name('bands.settings');
     });
 });
 
