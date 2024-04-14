@@ -12,4 +12,9 @@ class BandController extends Controller
     {
         return Inertia::render('Bands/Index');
     }
+
+    public function create(Request $request): Response
+    {
+        return Inertia::render('Bands/Create');
+    }
 }

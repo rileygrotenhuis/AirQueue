@@ -11,7 +11,8 @@ Route::middleware('auth:web')->group(function () {
     })->name('home');
 
     Route::prefix('bands')->group(function () {
-        Route::get('', [BandController::class, 'index'])->name('bands.index');
+        Route::get('/', [BandController::class, 'index'])->name('bands.index');
+        Route::get('/create', [BandController::class, 'create'])->name('bands.create');
     });
 });
 

@@ -10,7 +10,10 @@ import AddIcon from '@/Components/Icons/AddIcon.vue';
       <a href="#" class="flex items-center gap-4 text-3xl text-orange-600">
         <InviteIcon />
       </a>
-      <a href="#" class="flex items-center gap-4 text-3xl text-orange-600">
+      <a
+        :href="route('bands.create')"
+        class="flex items-center gap-4 text-3xl text-orange-600"
+      >
         <AddIcon />
       </a>
     </div>
