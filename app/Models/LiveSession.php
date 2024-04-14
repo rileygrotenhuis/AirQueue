@@ -26,6 +26,11 @@ class LiveSession extends Model
         return $this->belongsTo(User::class, 'host_id');
     }
 
+    public function band(): BelongsTo
+    {
+        return $this->belongsTo(Band::class, 'band_id');
+    }
+
     public function members(): BelongsToMany
     {
         return $this->belongsToMany(
@@ -34,10 +39,5 @@ class LiveSession extends Model
             'live_session_id',
             'user_id'
         );
-    }
-
-    public function band(): BelongsTo
-    {
-        return $this->belongsTo(Band::class, 'band_id');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -41,6 +42,16 @@ class User extends Authenticatable
     public function ownedBands(): HasMany
     {
         return $this->hasMany(Band::class, 'owner_id');
+    }
+
+    public function bands(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Band::class,
+            'band_user',
+            'user_id',
+            'band_id'
+        )->withPivot('has_accepted');
     }
 
     public function hostedLiveSessions(): HasMany

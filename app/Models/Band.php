@@ -27,9 +27,12 @@ class Band extends Model
 
     public function members(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'band_user')
-            ->using(BandUser::class)
-            ->withPivot('has_accepted');
+        return $this->belongsToMany(
+            User::class,
+            'band_user',
+            'band_id',
+            'user_id'
+        )->withPivot('has_accepted');
     }
 
     public function hostedLiveSessions(): HasMany
