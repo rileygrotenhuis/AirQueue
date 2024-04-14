@@ -11,7 +11,7 @@ use Inertia\Inertia;
 Route::middleware('auth:web')->get('/', function (Request $request) {
     $liveSessions = $request->user()->liveSessions;
 
-    return Inertia::render('Index', [
+    return Inertia::render('Landing/Index', [
         'liveSessions' => $liveSessions,
     ]);
 })->name('home');
