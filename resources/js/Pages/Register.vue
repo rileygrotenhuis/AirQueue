@@ -4,7 +4,8 @@ import InputError from '@/Components/InputError.vue';
 import { useForm } from '@inertiajs/vue3';
 
 const form = useForm({
-  name: '',
+  first_name: '',
+  last_name: '',
   email: '',
   password: '',
   password_confirmation: '',
@@ -20,20 +21,34 @@ const submit = () => {
     <div>
       <form
         @submit.prevent="submit"
-        class="w-full sm:min-w-[485px] h-fit p-6 bg-white bg-opacity-20 rounded-3xl border border-zinc-200 border-opacity-10 shadow-xl backdrop-blur-[35.10px] flex-col justify-start items-center gap-[38px] inline-flex mt-12"
+        class="w-full sm:min-w-[485px] h-fit p-6 bg-white bg-opacity-20 rounded-3xl border border-zinc-200 border-opacity-10 shadow-xl backdrop-blur-[35.10px] flex-col justify-start items-center gap-[25px] inline-flex mt-12"
       >
-        <h3 class="text-white text-4xl font-bold text-center">Sign In</h3>
+        <h3 class="text-white text-4xl font-bold">Register</h3>
 
-        <div class="flex flex-col w-full">
-          <label class="text-white mb-1" for="name"> Name </label>
-          <input
-            v-model="form.name"
-            type="text"
-            id="name"
-            class="bg-transparent px-4 py-2 w-full rounded-lg border border-white justify-start items-center gap-2.5 inline-flex text-white placeholder-white placeholder-opacity-50 focus:ring-orange-300 focus:border-orange-300"
-            placeholder="Enter your name here"
-          />
-          <InputError class="mt-2" :message="form.errors.name" />
+        <div class="w-full flex gap-4">
+          <div class="flex flex-col w-full">
+            <label class="text-white mb-1" for="name"> First Name </label>
+            <input
+              v-model="form.first_name"
+              type="text"
+              id="first_name"
+              class="bg-transparent px-4 py-2 w-full rounded-lg border border-white justify-start items-center gap-2.5 inline-flex text-white placeholder-white placeholder-opacity-50 focus:ring-orange-300 focus:border-orange-300"
+              placeholder="First name"
+            />
+            <InputError class="mt-2" :message="form.errors.first_name" />
+          </div>
+
+          <div class="flex flex-col w-full">
+            <label class="text-white mb-1" for="name"> Last Name </label>
+            <input
+              v-model="form.last_name"
+              type="text"
+              id="last_name"
+              class="bg-transparent px-4 py-2 w-full rounded-lg border border-white justify-start items-center gap-2.5 inline-flex text-white placeholder-white placeholder-opacity-50 focus:ring-orange-300 focus:border-orange-300"
+              placeholder="Last name"
+            />
+            <InputError class="mt-2" :message="form.errors.last_name" />
+          </div>
         </div>
 
         <div class="flex flex-col w-full">

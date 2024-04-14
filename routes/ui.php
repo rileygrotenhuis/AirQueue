@@ -3,9 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::middleware('auth')->group(function () {
+    Route::get('/', function () {
+        return Inertia::render('Index');
+    })->name('home');
+});
 
 Route::get('/register', function () {
     return Inertia::render('Register');

@@ -18,9 +18,9 @@ const submit = () => {
     <div>
       <form
         @submit.prevent="submit"
-        class="w-full sm:min-w-[485px] h-fit p-6 bg-white bg-opacity-20 rounded-3xl border border-zinc-200 border-opacity-10 shadow-xl backdrop-blur-[35.10px] flex-col justify-start items-center gap-[38px] inline-flex mt-12"
+        class="w-full sm:min-w-[485px] h-fit p-6 bg-white bg-opacity-20 rounded-3xl border border-zinc-200 border-opacity-10 shadow-xl backdrop-blur-[35.10px] flex-col justify-start items-center gap-[25px] inline-flex mt-12"
       >
-        <h3 class="text-white text-4xl font-bold text-center">Sign In</h3>
+        <h3 class="text-white text-4xl font-bold">Sign In</h3>
 
         <div class="flex flex-col w-full">
           <label class="text-white mb-1" for="email"> Email </label>

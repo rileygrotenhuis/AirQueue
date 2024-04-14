@@ -11,7 +11,8 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
     ];
@@ -21,11 +22,18 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $appends = ['initials'];
+
     protected function casts(): array
     {
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function getInitialsAttribute(): string
+    {
+        return $this->first_name[0].$this->last_name[0];
     }
 }

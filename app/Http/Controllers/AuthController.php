@@ -12,7 +12,8 @@ class AuthController extends Controller
     public function register(RegistrationRequest $request): RedirectResponse
     {
         $user = User::create([
-            'name' => $request->input('name'),
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
         ]);
