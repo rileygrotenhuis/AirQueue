@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Head, usePage } from '@inertiajs/vue3';
 import LogoIcon from '@/Components/Icons/LogoIcon.vue';
-import SessionIcon from '@/Components/Icons/SessionIcon.vue';
 import UserDropdownMenu from '@/Layouts/Partials/UserDropdownMenu.vue';
 import SessionDropdownMenu from '@/Layouts/Partials/SessionDropdownMenu.vue';
 
