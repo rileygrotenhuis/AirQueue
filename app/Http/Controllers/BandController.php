@@ -56,9 +56,4 @@ class BandController extends Controller
 
         return to_route('bands.show', $band);
     }
-
-    public function settings(Request $request, Band $band): Response
-    {
-        return Inertia::render('Bands/Settings');
-    }
 }
