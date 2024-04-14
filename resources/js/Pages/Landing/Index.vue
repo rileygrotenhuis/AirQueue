@@ -2,8 +2,8 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import SessionBanner from '@/Pages/Landing/Partials/SessionBanner.vue';
 import LandingTabs from '@/Pages/Landing/Partials/LandingTabs.vue';
+import SongRequestBanner from '@/Components/SongRequests/SongRequestBanner.vue';
 import { ref } from 'vue';
-import SongRequestBanner from '@/Pages/Landing/Partials/SongRequestBanner.vue';
 
 defineProps({
   songRequests: Array,

@@ -57,10 +57,27 @@ class LiveSessionController extends Controller
 
     public function show(Request $request, LiveSession $liveSession): Response
     {
-        //        Gate::authorize('isMember', $liveSession);
+        Gate::authorize('isMember', $liveSession);
+
+        $user = $request->user();
+
+        $formattedLiveSession = [
+            'id' => $liveSession->id,
+            'host_id' => $liveSession->host_id,
+            'band_id' => $liveSession->band_id,
+            'title' => $liveSession->title,
+            'session_key' => $liveSession->session_key,
+            'session_passcode' => $liveSession->session_passcode,
+            'is_host' => $liveSession->host_id === $user->id,
+            'is_member' => $liveSession->members->contains($user),
+        ];
+
+        $songRequests = $user->songRequests()->where('live_session_id', $liveSession->id)->get();
 
         return Inertia::render('LiveSessions/Show', [
-            'liveSession' => $liveSession,
+            'liveSession' => $formattedLiveSession,
+            'songRequests' => $songRequests,
+            'members' => $liveSession->members()->get(),
         ]);
     }
 
