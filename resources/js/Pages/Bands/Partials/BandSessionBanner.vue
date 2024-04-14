@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { router, useForm } from '@inertiajs/vue3';
+
 const props = defineProps({
   session: Object,
 });
 
 const action = () => {
-  if (props.session.is_member && !props.session.is_owner) {
+  if (props.session.is_member && !props.session.is_host) {
     leaveSession();
   } else if (!props.session.is_member) {
     joinSession();
@@ -12,11 +14,14 @@ const action = () => {
 };
 
 const joinSession = () => {
-  alert('JOINING');
+  useForm({
+    session_key: props.session.session_key,
+    session_passcode: props.session.session_passcode,
+  }).post(route('live-sessions.join'));
 };
 
 const leaveSession = () => {
-  alert('LEAVING');
+  router.post(route('live-sessions.leave', props.session.id));
 };
 </script>
 
@@ -39,8 +44,9 @@ const leaveSession = () => {
     <div
       class="hidden group-hover:block transition-all duration-50 ease-in-out"
     >
-      <button v-if="session.is_member && !session.is_owner">LEAVE</button>
+      <button v-if="session.is_member && !session.is_host">LEAVE</button>
       <button v-else-if="!session.is_member">JOIN</button>
+      <button v-else>HOSTING</button>
     </div>
   </div>
 </template>

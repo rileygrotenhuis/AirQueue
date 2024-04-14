@@ -50,9 +50,12 @@ class BandController extends Controller
 
         $bandSessions = $band->hostedLiveSessions->map(function ($session) use ($user) {
             return [
+                'id' => $session->id,
                 'host_id' => $session->host_id,
                 'band_id' => $session->band_id,
                 'title' => $session->title,
+                'session_key' => $session->session_key,
+                'session_passcode' => $session->session_passcode,
                 'is_host' => $session->host_id === $user->id,
                 'is_member' => $session->members->contains($user),
             ];

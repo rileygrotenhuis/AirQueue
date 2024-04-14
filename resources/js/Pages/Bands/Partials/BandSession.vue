@@ -26,6 +26,7 @@ const form = useForm({
         :key="index"
         :session="session"
       />
+      <div v-if="bandSessions.length === 0">No band sessions.</div>
     </div>
   </div>
 </template>

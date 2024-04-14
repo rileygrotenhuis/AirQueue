@@ -50,7 +50,7 @@ class LiveSessionController extends Controller
     {
         Gate::authorize('isMember', $liveSession);
 
-        $liveSession->members()->where('user_id', $request->user()->id)->delete();
+        LiveSessionUser::query()->where('user_id', $request->user()->id)->delete();
 
         return to_route('home');
     }
