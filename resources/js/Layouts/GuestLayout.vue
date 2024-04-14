@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3';
+import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 
 defineProps({
   title: String,
@@ -9,9 +10,9 @@ defineProps({
 <template>
   <Head :title="title" />
   <div>
-    <nav class="w-full px-4 py-4 bg-orange-700 text-center">
-      <a :href="route('home')">
-        <h1 class="text-4xl text-white font-bold w-full">AirQueue</h1>
+    <nav class="w-full px-4 py-4 bg-orange-700 flex justify-center">
+      <a :href="route('home')" class="hover:cursor-pointer">
+        <ApplicationLogo />
       </a>
     </nav>
 
