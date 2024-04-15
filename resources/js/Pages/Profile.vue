@@ -2,6 +2,29 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { useForm, usePage } from '@inertiajs/vue3';
 import InputError from '@/Components/InputError.vue';
+import { computed } from 'vue';
+
+const props = defineProps({
+  spotifyClientId: String,
+  spotifyClientSecret: String,
+  spotifyRedirectUri: String,
+});
+
+const spotifyAuthorizationUrl = computed(() => {
+  const scope =
+    'user-read-private user-read-email streaming app-remote-control';
+  const state = 'spotify';
+
+  const params = new URLSearchParams({
+    response_type: 'code',
+    client_id: props.spotifyClientId,
+    scope: scope,
+    redirect_uri: props.spotifyRedirectUri,
+    state: state,
+  }).toString();
+
+  return `https://accounts.spotify.com/authorize?${params}`;
+});
 
 const user = usePage().props.auth.user;
 
@@ -19,6 +42,15 @@ const submit = () => {
 <template>
   <AuthenticatedLayout title="Bands">
     <div class="max-w-5xl mx-auto py-12 px-4">
+      <div class="mb-4">
+        <a
+          :href="spotifyAuthorizationUrl"
+          class="bg-green-500 text-white px-4 py-2 rounded-lg border border-green-500 hover:bg-green-300 hover:text-green-900 font-bold hover:border-green-300 transition-colors duration-300 ease-in-out hover:cursor-pointer"
+        >
+          Connect to Spotify
+        </a>
+      </div>
+
       <form @submit.prevent="submit" class="space-y-6">
         <div>
           <h3 class="text-orange-700 font-bold text-3xl mb-1">

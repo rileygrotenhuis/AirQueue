@@ -12,7 +12,11 @@ class ProfileController extends Controller
 {
     public function index(Request $request): Response
     {
-        return Inertia::render('Profile');
+        return Inertia::render('Profile', [
+            'spotifyClientId' => config('services.spotify.client_id'),
+            'spotifyClientSecret' => config('services.spotify.client_secret'),
+            'spotifyRedirectUri' => config('services.spotify.redirect'),
+        ]);
     }
 
     public function update(UpdateProfileRequest $request): RedirectResponse
