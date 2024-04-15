@@ -15,14 +15,14 @@ class SpotifyAuthController extends Controller
 
             $client = new Client();
             $response = $client->post('https://accounts.spotify.com/api/token', [
+                'headers' => [
+                    'content-type' => 'application/x-www-form-urlencoded',
+                    'Authorization' => 'Basic '.base64_encode(config('services.spotify.client_id').':'.config('services.spotify.client_secret')),
+                ],
                 'form_params' => [
                     'code' => $authorizationCode,
                     'redirect_uri' => config('services.spotify.redirect'),
                     'grant_type' => 'authorization_code',
-                ],
-                'headers' => [
-                    'content-type' => 'application/x-www-form-urlencoded',
-                    'Authorization' => 'Basic '.base64_encode(config('services.spotify.client_id').':'.config('services.spotify.client_secret')),
                 ],
             ]);
 
