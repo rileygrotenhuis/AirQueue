@@ -21,7 +21,10 @@ defineProps({
     <div class="flex gap-8">
       <a :href="route('bands.invitations')" class="flex items-center">
         <InviteIcon />
-        <span class="text-lg text-orange-700 font-bold">
+        <span
+          v-if="invitationCount > 0"
+          class="text-lg text-orange-700 font-bold"
+        >
           {{ invitationCount }}
         </span>
       </a>
