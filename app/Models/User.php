@@ -24,7 +24,10 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    protected $appends = ['initials'];
+    protected $appends = [
+        'initials',
+        'is_spotify_connected',
+    ];
 
     protected function casts(): array
     {
@@ -37,6 +40,16 @@ class User extends Authenticatable
     public function getInitialsAttribute(): string
     {
         return $this->first_name[0].$this->last_name[0];
+    }
+
+    public function getIsSpotifyConnectedAttribute(): bool
+    {
+        return $this->spotifyTokens()->exists();
+    }
+
+    public function spotifyTokens(): HasMany
+    {
+        return $this->hasMany(SpotifyToken::class);
     }
 
     public function ownedBands(): HasMany

@@ -6,6 +6,7 @@ use App\Http\Controllers\BandInvitationController;
 use App\Http\Controllers\LiveSessionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SongRequestController;
+use App\Http\Controllers\SpotifyAuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -55,6 +56,8 @@ Route::middleware('auth:web')->prefix('profile')->group(function () {
     Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
     Route::put('/', [ProfileController::class, 'update'])->name('profile.update');
 });
+
+Route::get('/spotify/redirect', [SpotifyAuthController::class, 'redirect'])->name('spotify.redirect');
 
 Route::post('/register', [AuthController::class, 'register'])->name('register-user');
 Route::get('/register', function () {
