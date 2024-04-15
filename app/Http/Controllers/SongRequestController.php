@@ -15,7 +15,7 @@ class SongRequestController extends Controller
 {
     public function index(Request $request): Response
     {
-        return Inertia::render('SongRequest', [
+        return Inertia::render('SongRequests/Index', [
             'liveSessions' => $request->user()->liveSessions,
         ]);
     }
