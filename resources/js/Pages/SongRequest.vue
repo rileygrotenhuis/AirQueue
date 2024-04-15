@@ -101,6 +101,9 @@ const submit = () => {
             <InputError class="mt-2" :message="form.errors.song_artist" />
           </div>
           <div>
+            <InputError class="mt-2" :message="form.errors.session_ids" />
+          </div>
+          <div>
             <button
               type="submit"
               class="float-right w-[150px] bg-orange-700 text-white px-4 py-2 rounded-lg border border-orange-700 hover:bg-orange-300 hover:text-orange-900 font-bold hover:border-orange-300 transition-colors duration-300 ease-in-out hover:cursor-pointer"

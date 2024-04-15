@@ -26,4 +26,11 @@ class StoreSongRequestRequest extends FormRequest
             'song_artist' => ['required', 'string', 'max:255'],
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'session_ids.required' => 'Please select at least one session.',
+        ];
+    }
 }
