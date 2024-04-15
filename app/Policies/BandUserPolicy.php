@@ -10,7 +10,7 @@ class BandUserPolicy
 {
     use HandlesAuthorization;
 
-    public function isInvited(BandUser $bandUser, User $user): bool
+    public function isInvited(User $user, BandUser $bandUser): bool
     {
         return $bandUser->user_id === $user->id && $bandUser->has_accepted === false;
     }

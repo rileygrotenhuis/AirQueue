@@ -51,7 +51,7 @@ class User extends Authenticatable
             'band_user',
             'user_id',
             'band_id'
-        )->withPivot('has_accepted');
+        )->withPivot('id', 'has_accepted');
     }
 
     public function hostedLiveSessions(): HasMany

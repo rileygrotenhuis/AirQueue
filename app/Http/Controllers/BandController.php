@@ -21,8 +21,14 @@ class BandController extends Controller
             ->where('has_accepted', true)
             ->get();
 
+        $invitationCount = $request->user()
+            ->bands()
+            ->where('has_accepted', false)
+            ->count();
+
         return Inertia::render('Bands/Index', [
             'bands' => $bands,
+            'invitationCount' => $invitationCount,
         ]);
     }
 
