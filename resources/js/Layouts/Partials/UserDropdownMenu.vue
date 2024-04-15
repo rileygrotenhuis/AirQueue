@@ -22,7 +22,7 @@ const logout = () => {
       <template #content>
         <div class="block px-4 py-2 text-xs text-gray-400">Account</div>
 
-        <DropdownLink href="#"> Profile </DropdownLink>
+        <DropdownLink :href="route('profile.index')"> Profile </DropdownLink>
 
         <form @submit.prevent="logout">
           <button

@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BandController;
 use App\Http\Controllers\BandInvitationController;
 use App\Http\Controllers\LiveSessionController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SongRequestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -48,6 +49,11 @@ Route::middleware('auth:web')->prefix('song-requests')->group(function () {
     Route::post('/', [SongRequestController::class, 'store'])->name('song-requests.store');
     Route::post('/{songRequest}/approve', [SongRequestController::class, 'approve'])->name('song-requests.approve');
     Route::post('/{songRequest}/reject', [SongRequestController::class, 'reject'])->name('song-requests.reject');
+});
+
+Route::middleware('auth:web')->prefix('profile')->group(function () {
+    Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
+    Route::put('/', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 Route::post('/register', [AuthController::class, 'register'])->name('register-user');
