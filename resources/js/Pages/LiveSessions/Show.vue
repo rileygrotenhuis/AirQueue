@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import SongRequestBanner from '@/Components/SongRequests/SongRequestBanner.vue';
 import SessionMembers from '@/Pages/LiveSessions/Partials/SessionMembers.vue';

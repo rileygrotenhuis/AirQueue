@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import MemberIcon from '@/Components/Icons/MemberIcon.vue';
 import { computed } from 'vue';
 

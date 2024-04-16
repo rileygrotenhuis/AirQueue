@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import ApproveIcon from '@/Components/Icons/ApproveIcon.vue';
 import RejectIcon from '@/Components/Icons/RejectIcon.vue';
 import { useForm } from '@inertiajs/vue3';

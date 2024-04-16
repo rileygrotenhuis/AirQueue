@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import InviteIcon from '@/Components/Icons/InviteIcon.vue';
 import AddIcon from '@/Components/Icons/AddIcon.vue';
 

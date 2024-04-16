@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { Head, usePage } from '@inertiajs/vue3';
 import LogoIcon from '@/Components/Icons/LogoIcon.vue';
 import UserDropdownMenu from '@/Layouts/Partials/UserDropdownMenu.vue';

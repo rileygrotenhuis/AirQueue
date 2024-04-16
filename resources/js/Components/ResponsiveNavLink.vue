@@ -1,11 +1,14 @@
-<script setup lang="ts">
+<script setup>
 import { computed } from 'vue';
 import { Link } from '@inertiajs/vue3';
 
-const props = defineProps<{
-  href: string;
-  active?: boolean;
-}>();
+const props = defineProps({
+  href: String,
+  active: {
+    type: Boolean,
+    default: false,
+  },
+});
 
 const classes = computed(() =>
   props.active

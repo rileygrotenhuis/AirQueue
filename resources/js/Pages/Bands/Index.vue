@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import BandsHeader from '@/Pages/Bands/Partials/BandsHeader.vue';
 import BandBanner from '@/Pages/Bands/Partials/BandBanner.vue';
