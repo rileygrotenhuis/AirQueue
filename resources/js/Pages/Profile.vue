@@ -12,7 +12,7 @@ const props = defineProps({
 
 const spotifyAuthorizationUrl = computed(() => {
   const scope =
-    'user-read-private user-read-email streaming app-remote-control';
+    'user-read-private user-read-email streaming app-remote-control user-read-playback-state';
   const state = 'spotify';
 
   const params = new URLSearchParams({

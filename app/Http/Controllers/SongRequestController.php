@@ -39,7 +39,7 @@ class SongRequestController extends Controller
                     'song_artist' => $request->input('song_artist'),
                     'spotify_image_url' => $request->input('spotify_image_url'),
                     'spotify_track_id' => $request->input('spotify_track_id'),
-                    'spotify_track_uri' => $request->input('spotify_track_uri')
+                    'spotify_track_uri' => $request->input('spotify_track_uri'),
                 ]);
             }
         }
