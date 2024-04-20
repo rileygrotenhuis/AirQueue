@@ -9,7 +9,7 @@ const props = defineProps({
 const emit = defineEmits(['close']);
 
 const form = useForm({
-  email: '',
+  username: '',
 });
 
 const submit = () => {
@@ -32,15 +32,15 @@ const submit = () => {
     </div>
     <form @submit.prevent="submit" class="space-y-6 py-6">
       <div>
-        <label class="text-lg mb-2" for="name">Member's Email</label>
+        <label class="text-lg mb-2" for="username">Member's Username</label>
         <input
-          v-model="form.email"
-          type="email"
-          id="email"
+          v-model="form.username"
+          type="text"
+          id="username"
           class="px-4 py-2 w-full rounded-lg border justify-start items-center gap-2.5 inline-flex text-black placeholder-opacity-10 focus:ring-orange-300 focus:border-orange-300"
-          placeholder="Enter new member's email address..."
+          placeholder="Enter new member's username..."
         />
-        <InputError class="mt-1" :message="form.errors.email" />
+        <InputError class="mt-1" :message="form.errors.username" />
       </div>
       <div>
         <button

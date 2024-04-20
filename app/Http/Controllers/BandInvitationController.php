@@ -57,12 +57,12 @@ class BandInvitationController extends Controller
         Gate::authorize('isOwner', $band);
 
         $request->validate([
-            'email' => ['required', 'email', 'exists:users,email'],
+            'username' => ['required', 'exists:users,username'],
         ]);
 
         BandUser::firstOrCreate([
             'band_id' => $band->id,
-            'user_id' => User::where('email', $request->input('email'))->first()->id,
+            'user_id' => User::where('username', $request->input('username'))->first()->id,
         ]);
 
         return to_route('bands.show', $band);
