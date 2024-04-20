@@ -50,9 +50,7 @@ class SongRequestController extends Controller
     {
         Gate::authorize('isOwner', $songRequest);
 
-        // TODO: Implement Spotify API integration to add the song to the live session's playlist.
-
-        $songRequest->delete();
+        $request->user()->addSongToQueue($songRequest);
 
         return to_route('home');
     }
