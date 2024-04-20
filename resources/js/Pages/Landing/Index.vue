@@ -6,6 +6,7 @@ import SongRequestBanner from '@/Components/SongRequests/SongRequestBanner.vue';
 import { ref } from 'vue';
 
 defineProps({
+  playbackStatus: Boolean,
   songRequests: Array,
   liveSessions: Array,
 });
@@ -32,9 +33,18 @@ const switchTabs = (tab) => {
         v-if="currentTab === 0"
         class="max-h-[700px] flex flex-col gap-8 p-6 rounded-2xl bg-orange-400/50 mt-8 overflow-y-auto"
       >
+        <p
+          v-if="!playbackStatus"
+          class="w-full bg-orange-900 p-2 rounded-xl text-white text-base md:text-lg text-center"
+        >
+          You must be playing music on a device to approve or reject song
+          requests.
+        </p>
+
         <SongRequestBanner
           v-for="(songRequest, index) in songRequests"
           :key="index"
+          :playbackStatus="playbackStatus"
           :songRequest="songRequest"
         />
         <div

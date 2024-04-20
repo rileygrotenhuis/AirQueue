@@ -75,6 +75,7 @@ class LiveSessionController extends Controller
         $songRequests = $user->songRequests()->where('live_session_id', $liveSession->id)->get();
 
         return Inertia::render('LiveSessions/Show', [
+            'playbackStatus' => $request->user()->checkPlaybackStatus(),
             'liveSession' => $formattedLiveSession,
             'songRequests' => $songRequests,
             'members' => $liveSession->members()->get(),

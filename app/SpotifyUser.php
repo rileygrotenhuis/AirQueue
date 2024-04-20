@@ -34,8 +34,6 @@ trait SpotifyUser
             ],
         ]);
 
-        logger($response);
-
         return json_decode($response->getBody()->getContents(), true);
     }
 

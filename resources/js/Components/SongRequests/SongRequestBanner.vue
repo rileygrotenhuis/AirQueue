@@ -5,6 +5,7 @@ import { useForm } from '@inertiajs/vue3';
 
 const props = defineProps({
   songRequest: Object,
+  playbackStatus: Boolean,
 });
 
 const rejectSongRequest = () => {
@@ -43,7 +44,7 @@ const approveSongRequest = () => {
       </div>
     </div>
 
-    <div class="flex items-center gap-4 md:gap-8">
+    <div v-if="playbackStatus" class="flex items-center gap-4 md:gap-8">
       <button @click.prevent="rejectSongRequest">
         <RejectIcon />
       </button>

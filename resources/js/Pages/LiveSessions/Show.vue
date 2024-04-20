@@ -6,6 +6,7 @@ import { computed } from 'vue';
 import { router, usePage } from '@inertiajs/vue3';
 
 const props = defineProps({
+  playbackStatus: Boolean,
   liveSession: Object,
   songRequests: Array,
   members: Array,
@@ -41,10 +42,19 @@ const endSession = () => {
         <div
           class="max-h-[700px] flex flex-col gap-8 p-6 rounded-2xl bg-orange-400/50 overflow-y-auto"
         >
+          <p
+            v-if="!playbackStatus"
+            class="w-full bg-orange-900 p-2 rounded-xl text-white text-base md:text-lg text-center"
+          >
+            You must be playing music on a device to approve or reject song
+            requests.
+          </p>
+
           <SongRequestBanner
             v-for="(songRequest, index) in songRequests"
             :key="index"
             :songRequest="songRequest"
+            :playbackStatus="playbackStatus"
           />
           <div
             v-if="songRequests.length === 0"
