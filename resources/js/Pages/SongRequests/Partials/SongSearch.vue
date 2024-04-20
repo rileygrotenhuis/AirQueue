@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import axios from 'axios';
 import { ref } from 'vue';
 
