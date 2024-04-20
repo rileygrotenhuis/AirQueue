@@ -6,6 +6,7 @@ import { useForm } from '@inertiajs/vue3';
 const form = useForm({
   first_name: '',
   last_name: '',
+  username: '',
   email: '',
   password: '',
   password_confirmation: '',
@@ -49,6 +50,18 @@ const submit = () => {
             />
             <InputError class="mt-2" :message="form.errors.last_name" />
           </div>
+        </div>
+
+        <div class="flex flex-col w-full">
+          <label class="text-white mb-1" for="username"> Username </label>
+          <input
+            v-model="form.username"
+            type="text"
+            id="username"
+            class="bg-transparent px-4 py-2 w-full rounded-lg border border-white justify-start items-center gap-2.5 inline-flex text-white placeholder-white placeholder-opacity-50 focus:ring-orange-300 focus:border-orange-300"
+            placeholder="Enter your username here"
+          />
+          <InputError class="mt-2" :message="form.errors.username" />
         </div>
 
         <div class="flex flex-col w-full">

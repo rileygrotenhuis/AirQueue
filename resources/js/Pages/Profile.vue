@@ -31,6 +31,7 @@ const user = usePage().props.auth.user;
 const form = useForm({
   first_name: user.first_name,
   last_name: user.last_name,
+  username: user.username,
   email: user.email,
 });
 
@@ -81,6 +82,17 @@ const submit = () => {
             placeholder="Enter your last name..."
           />
           <InputError class="mt-2" :message="form.errors.last_name" />
+        </div>
+        <div>
+          <label class="text-lg mb-2" for="username">Username</label>
+          <input
+            v-model="form.username"
+            type="text"
+            id="username"
+            class="px-4 py-2 w-full rounded-lg border justify-start items-center gap-2.5 inline-flex text-black placeholder-opacity-10 focus:ring-orange-300 focus:border-orange-300"
+            placeholder="Enter your username..."
+          />
+          <InputError class="mt-2" :message="form.errors.username" />
         </div>
         <div>
           <label class="text-lg mb-2" for="email">Email</label>

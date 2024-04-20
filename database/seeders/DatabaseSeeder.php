@@ -13,16 +13,19 @@ class DatabaseSeeder extends Seeder
         [
             'first_name' => 'John',
             'last_name' => 'Doe',
+            'username' => 'johndoe',
             'email' => 'johndoe@airqueue.live',
         ],
         [
             'first_name' => 'Jane',
             'last_name' => 'Doe',
+            'username' => 'janedoe',
             'email' => 'janedoe@airqueue.live',
         ],
         [
             'first_name' => 'Jake',
             'last_name' => 'Smith',
+            'username' => 'jakesmith',
             'email' => 'jakesmith@airqueue.live',
         ],
     ];
@@ -38,6 +41,7 @@ class DatabaseSeeder extends Seeder
         $adminUser = User::factory()->create([
             'first_name' => 'Dev',
             'last_name' => 'Admin',
+            'username' => 'admin',
             'email' => 'dev@airqueue.live',
             'password' => bcrypt('password'),
         ]);
