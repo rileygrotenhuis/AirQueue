@@ -24,6 +24,9 @@ class StoreSongRequestRequest extends FormRequest
             'session_ids.*' => ['required', 'exists:live_sessions,id'],
             'song_name' => ['required', 'string', 'max:255'],
             'song_artist' => ['required', 'string', 'max:255'],
+            'spotify_image_url' => ['required', 'url'],
+            'spotify_track_id' => ['required', 'string'],
+            'spotify_track_uri' => ['required', 'string'],
         ];
     }
 

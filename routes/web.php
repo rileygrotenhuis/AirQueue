@@ -49,6 +49,7 @@ Route::middleware('auth:web')->prefix('live-sessions')->group(function () {
 Route::middleware('auth:web')->prefix('song-requests')->group(function () {
     Route::get('/', [SongRequestController::class, 'index'])->name('song-requests.index');
     Route::post('/', [SongRequestController::class, 'store'])->name('song-requests.store');
+    Route::get('/search', [SongRequestController::class, 'search'])->name('song-requests.search');
     Route::post('/{songRequest}/approve', [SongRequestController::class, 'approve'])->name('song-requests.approve');
     Route::post('/{songRequest}/reject', [SongRequestController::class, 'reject'])->name('song-requests.reject');
 });
