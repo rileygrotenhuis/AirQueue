@@ -11,9 +11,13 @@ trait SpotifyUser
     {
         $client = new Client();
 
+        if ($this->spotifyTokens->isEmpty()) {
+            return false;
+        }
+
         $response = $client->get('https://api.spotify.com/v1/me/player', [
             'headers' => [
-                'Authorization' => 'Bearer '.$this->spotifyTokens->first()->access_token,
+                'Authorization' => 'Bearer '.$this->spotifyTokens->first()->access_token ?? null,
             ],
         ]);
 
