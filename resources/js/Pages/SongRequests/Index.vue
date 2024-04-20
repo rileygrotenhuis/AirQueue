@@ -2,6 +2,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { useForm } from '@inertiajs/vue3';
 import InputError from '@/Components/InputError.vue';
+import SongSearch from '@/Pages/SongRequests/Partials/SongSearch.vue';
 
 defineProps({
   liveSessions: Array,
@@ -77,40 +78,8 @@ const submit = () => {
           </div>
         </div>
 
-        <div class="col-span-1 md:col-span-2 space-y-6">
-          <div>
-            <label class="text-lg mb-2" for="name">Song Name</label>
-            <input
-              v-model="form.song_name"
-              type="text"
-              id="song_name"
-              class="px-4 py-2 w-full rounded-lg border justify-start items-center gap-2.5 inline-flex text-black placeholder-opacity-10 focus:ring-orange-300 focus:border-orange-300"
-              placeholder="Enter your song name..."
-            />
-            <InputError class="mt-2" :message="form.errors.song_name" />
-          </div>
-          <div>
-            <label class="text-lg mb-2" for="name">Song Artist</label>
-            <input
-              v-model="form.song_artist"
-              type="text"
-              id="song_artist"
-              class="px-4 py-2 w-full rounded-lg border justify-start items-center gap-2.5 inline-flex text-black placeholder-opacity-10 focus:ring-orange-300 focus:border-orange-300"
-              placeholder="Enter your song artist..."
-            />
-            <InputError class="mt-2" :message="form.errors.song_artist" />
-          </div>
-          <div>
-            <InputError class="mt-2" :message="form.errors.session_ids" />
-          </div>
-          <div>
-            <button
-              type="submit"
-              class="float-right w-[150px] bg-orange-700 text-white px-4 py-2 rounded-lg border border-orange-700 hover:bg-orange-300 hover:text-orange-900 font-bold hover:border-orange-300 transition-colors duration-300 ease-in-out hover:cursor-pointer"
-            >
-              Request
-            </button>
-          </div>
+        <div class="col-span-1 md:col-span-2">
+          <SongSearch />
         </div>
       </form>
     </div>
