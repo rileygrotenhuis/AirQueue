@@ -58,4 +58,30 @@ trait SpotifyUser
             logger($e->getMessage());
         }
     }
+
+    public function refreshAccessToken(): void
+    {
+        try {
+            $client = new Client();
+            $response = $client->post('https://accounts.spotify.com/api/token', [
+                'headers' => [
+                    'content-type' => 'application/x-www-form-urlencoded',
+                    'Authorization' => 'Basic '.base64_encode(config('services.spotify.client_id').':'.config('services.spotify.client_secret')),
+                ],
+                'form_params' => [
+                    'grant_type' => 'refresh_token',
+                    'refresh_token' => $this->spotifyTokens->first()->refresh_token,
+                    'client_id' => config('services.spotify.client_id'),
+                ],
+            ]);
+
+            $data = json_decode($response->getBody(), true);
+
+            $this->spotifyTokens()->where('refresh_token', $this->spotifyTokens->first()->refresh_token)->update([
+                'access_token' => $data['access_token'],
+            ]);
+        } catch (\Exception $e) {
+            logger($e->getMessage());
+        }
+    }
 }
