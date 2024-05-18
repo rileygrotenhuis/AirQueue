@@ -79,6 +79,7 @@ trait SpotifyUser
 
             $this->spotifyTokens()->where('refresh_token', $this->spotifyTokens->first()->refresh_token)->update([
                 'access_token' => $data['access_token'],
+                'expires_at' => now()->addSeconds($data['expires_in']),
             ]);
         } catch (\Exception $e) {
             logger($e->getMessage());

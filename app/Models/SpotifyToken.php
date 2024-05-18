@@ -16,6 +16,7 @@ class SpotifyToken extends Model
         'user_id',
         'refresh_token',
         'access_token',
+        'expires_at',
     ];
 
     public function user(): BelongsTo

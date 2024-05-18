@@ -31,6 +31,7 @@ class SpotifyAuthController extends Controller
             $request->user()->spotifyTokens()->firstOrCreate([
                 'refresh_token' => $data['refresh_token'],
                 'access_token' => $data['access_token'],
+                'expires_at' => now()->addSeconds($data['expires_in']),
             ]);
         } catch (\Exception $e) {
             logger($e->getMessage());

@@ -43,7 +43,7 @@ const submit = () => {
 <template>
   <AuthenticatedLayout title="Bands">
     <div class="max-w-5xl mx-auto py-12 px-4">
-      <div v-if="!user.is_spotify_connected" class="mb-4">
+      <div v-if="!user.has_spotify_token" class="mb-4">
         <a
           :href="spotifyAuthorizationUrl"
           class="bg-green-500 text-white px-4 py-2 rounded-lg border border-green-500 hover:bg-green-300 hover:text-green-900 font-bold hover:border-green-300 transition-colors duration-300 ease-in-out hover:cursor-pointer"

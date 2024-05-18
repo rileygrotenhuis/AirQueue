@@ -28,6 +28,7 @@ class User extends Authenticatable
 
     protected $appends = [
         'initials',
+        'has_spotify_token',
         'is_spotify_connected',
     ];
 
@@ -44,9 +45,20 @@ class User extends Authenticatable
         return $this->first_name[0].$this->last_name[0];
     }
 
-    public function getIsSpotifyConnectedAttribute(): bool
+    public function getHasSpotifyTokenAttribute(): bool
     {
         return $this->spotifyTokens()->exists();
+    }
+
+    public function getIsSpotifyConnectedAttribute(): bool
+    {
+        $tokenIsValid = $this->spotifyTokens()->exists() && now() < $this->spotifyTokens()->first()->expires_at;
+
+        if (! $tokenIsValid) {
+            $this->refreshAccessToken();
+        }
+
+        return true;
     }
 
     public function spotifyTokens(): HasMany
