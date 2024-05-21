@@ -15,11 +15,17 @@ trait SpotifyUser
             return false;
         }
 
-        $response = $client->get('https://api.spotify.com/v1/me/player', [
-            'headers' => [
-                'Authorization' => 'Bearer '.$this->spotifyTokens->first()->access_token ?? null,
-            ],
-        ]);
+        try {
+            $response = $client->get('https://api.spotify.com/v1/me/player', [
+                'headers' => [
+                    'Authorization' => 'Bearer '.$this->spotifyTokens->first()->access_token ?? null,
+                ],
+            ]);
+        } catch (\Exception $e) {
+            $this->refreshAccessToken();
+
+            return false;
+        }
 
         if ($response->getStatusCode() === 204) {
             return false;
